@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const ClientSchema = new mongoose.Schema({
     name: String, 
+    phone: {
+        ddd: Number,
+        phone_number: Number
+    },
     address:{
         street: String,
         number: String, 
