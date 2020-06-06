@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const ClientListSchema = new mongoose.Schema({
     clientList:[{
         name: String,
+        avatar: String,
         phone: {
             ddd: Number,
             phone_number: Number

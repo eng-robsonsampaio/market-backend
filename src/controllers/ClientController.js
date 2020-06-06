@@ -10,14 +10,15 @@ module.exports = {
     },
 
     async store(request, response) {
-        const {name, phone, address, basket } =  request.body
+        const {name, avatar, phone, address, basket } =  request.body
 
         let client = await Client.findOne({ phone })
 
         // Evita cadastrar dois usuários com os mesmos telefones
         if(!client){
             client = await Client.create({
-                name, 
+                name,
+                avatar, 
                 phone,
                 address,
                 basket
