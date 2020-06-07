@@ -15,7 +15,13 @@ const ClientSchema = new mongoose.Schema({
     basket:[{
         product: String,
         quantity: Number,
-        weight: Number
+        weight: Number,
+        state: {
+            toDo: Boolean,
+            block: Boolean,
+            done: Boolean
+
+        }
     }],
 });
 
