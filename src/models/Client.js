@@ -16,12 +16,7 @@ const ClientSchema = new mongoose.Schema({
         product: String,
         quantity: Number,
         weight: Number,
-        state: {
-            toDo: Boolean,
-            block: Boolean,
-            done: Boolean
-
-        }
+        state: Boolean
     }],
 });
 

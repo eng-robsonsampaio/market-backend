@@ -10,7 +10,7 @@ module.exports = {
     },
 
     async store(request, response) {
-        const {name, avatar, phone, address, basket } =  request.body
+        const { name, avatar, phone, address, basket } =  request.body
 
         let client = await Client.findOne({ phone })
 
