@@ -1,4 +1,5 @@
-const Client = require('../models/Client')
+const Client = require('../models/Client');
+const { update } = require('../models/Client');
 
 // index= listar, show=monstrar um, store=gravar, update, destroy
 
@@ -7,6 +8,19 @@ module.exports = {
     async index(request, response) {
         const clients = await Client.find();
         return response.json(clients)
+    },
+
+    async update(request, response){
+        const { _id, item_id, state } = request.body
+
+        const client = await Client.updateOne({ _id }, 
+            {
+                $set:{
+                    ["basket."+ item_id +".state"]:state
+                }
+
+            })
+        return response.json(client);
     },
 
     async store(request, response) {
