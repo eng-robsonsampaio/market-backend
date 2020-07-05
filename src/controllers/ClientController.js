@@ -11,20 +11,22 @@ module.exports = {
     },
 
     async update(request, response){
-        const { _id, item_id, state } = request.body
+        const { _id, item_id, itemStatus } = request.body
 
-        const client = await Client.updateOne({ _id }, 
-            {
-                $set:{
-                    ["basket."+ item_id +".state"]:state
-                }
+            const client = await Client.updateOne({ _id }, 
+                {
+                    $set:{
+                        ["basket."+ item_id +".itemStatus"]:itemStatus
+                    }
 
-            })
+                })
+
+        
         return response.json(client);
     },
 
     async store(request, response) {
-        const { name, avatar, phone, address, basket } =  request.body
+        const { name, avatar, status, phone, address, basket } =  request.body
 
         let client = await Client.findOne({ phone })
 
@@ -33,6 +35,7 @@ module.exports = {
             client = await Client.create({
                 name,
                 avatar, 
+                status,
                 phone,
                 address,
                 basket
@@ -40,7 +43,7 @@ module.exports = {
             })
         }
 
-    console.log(client)
+    // console.log(client)
     return response.json(client);
     }
 }

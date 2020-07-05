@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const ClientSchema = new mongoose.Schema({
     name: String, 
     avatar: String,
+    clientStatus: Boolean, 
     phone: {
         ddd: Number,
         phone_number: Number
@@ -16,7 +17,7 @@ const ClientSchema = new mongoose.Schema({
         product: String,
         quantity: Number,
         weight: Number,
-        state: Boolean
+        itemStatus: Boolean
     }],
 });
 
