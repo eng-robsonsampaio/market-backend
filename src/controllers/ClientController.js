@@ -26,7 +26,7 @@ module.exports = {
     },
 
     async store(request, response) {
-        const { name, avatar, status, phone, address, basket } =  request.body
+        const { name, avatar, clientStatus, phone, address, basket } =  request.body
 
         let client = await Client.findOne({ phone })
 
@@ -35,11 +35,10 @@ module.exports = {
             client = await Client.create({
                 name,
                 avatar, 
-                status,
+                clientStatus,
                 phone,
                 address,
-                basket
-        
+                basket        
             })
         }
 
