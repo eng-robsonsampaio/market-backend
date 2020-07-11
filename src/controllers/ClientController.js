@@ -1,5 +1,6 @@
 const Client = require('../models/Client');
 const { update } = require('../models/Client');
+const { findConnections, sendMessage } = require('../websocket');
 
 // index= listar, show=monstrar um, store=gravar, update, destroy
 
@@ -40,9 +41,13 @@ module.exports = {
                 address,
                 basket        
             })
+
+
         }
 
-    // console.log(client)
+        const sendSocketMessageTo = findConnections()
+        sendMessage(sendSocketMessageTo, 'new-client', client)
+
     return response.json(client);
     }
 }
